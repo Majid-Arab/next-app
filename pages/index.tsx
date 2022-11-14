@@ -1,7 +1,10 @@
 import Head from "next/head";
-
-export default function Home({articles}: any) {
-  console.log(articles)
+import { ArticleList } from "../components/ArticleList";
+import { Article } from "../types";
+type Props ={
+  articles:Article[]
+}
+export default function Home({articles}:Props) {
   return (
     <div>
       <Head>
@@ -9,7 +12,7 @@ export default function Home({articles}: any) {
         <meta name='keywords' content='web development, programming' />
       </Head>
 
-      <h1>Welcome to Next</h1>
+      <ArticleList articles={articles}/>
     </div>
   );
 }
