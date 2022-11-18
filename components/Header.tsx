@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <div>
         <h1 className={headerStyle.title}>
-            <span>Web Dev</span> News
+            <span>WebDev</span> News
         </h1>
         {/* <style jsx>
             {`
