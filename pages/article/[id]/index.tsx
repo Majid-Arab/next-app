@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps, InferGetServerSidePropsType } from 'next'
 import { Article as ArticleType } from "../../../types";
+import { server } from "../../../config";
 
 
 
@@ -25,7 +26,7 @@ export default function Article({ article }: InferGetServerSidePropsType<typeof 
 export const getStaticProps: GetStaticProps<{ article: ArticleType }> = async (context) => {
 
   const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${context?.params?.id}`
+    `${server}/api/articles/${context?.params?.id}`
   );
 
   const article = await res.json();
@@ -40,7 +41,7 @@ export const getStaticProps: GetStaticProps<{ article: ArticleType }> = async (c
 export const getStaticPaths: GetStaticPaths  = async () => {
 
   const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts`
+    `${server}/api/articles`
   );
 
   const articles = await res.json();
